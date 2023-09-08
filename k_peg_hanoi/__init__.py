@@ -20,7 +20,7 @@ def nmove(m: int, n: int) -> float:
     if n == 2:
         return 1 if m == 1 else float("inf")
     elif n == 3:
-        return 2 ** m - 1
+        return 2**m - 1
     elif n == m + 1:
         return 2 * m - 1
     return min(nmove(i, n) * 2 + nmove(m - i, n - 1) for i in range(1, m))
