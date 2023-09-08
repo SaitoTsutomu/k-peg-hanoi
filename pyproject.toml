@@ -12,7 +12,7 @@ homepage = "https://github.com/SaitoTsutomu/k-peg-hanoi"
 license = "Apache-2.0"
 name = "k-peg-hanoi"
 readme = "README.md"
-version = "0.1.0"
+version = "0.1.1"
 
 [tool.poetry.scripts]
 hanoi = "k_peg_hanoi:main"
