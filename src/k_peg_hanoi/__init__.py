@@ -1,5 +1,5 @@
+from collections.abc import Iterable
 from functools import lru_cache
-from typing import Generator, List, Tuple
 
 import fire
 
@@ -26,21 +26,21 @@ def nmove(m: int, n: int) -> float:
     return min(nmove(i, n) * 2 + nmove(m - i, n - 1) for i in range(1, m))
 
 
-def hanoi(m: int, pos: List[int]) -> Generator[Tuple[int, int], None, None]:
+def hanoi(md: int, pos: list[int]) -> Iterable[tuple[int, int]]:
     """Moves of Tower of Hanoi
 
-    :param m: number of disks
-    :param n: number of rods
+    :param md: number of disks
+    :param pos: position of rods
     :return: from, to
     """
-    if m == 1:
+    if md == 1:
         yield pos[0], pos[-1]
         return
     n = len(pos)
     assert n > 2, "Too few len(pos)"
-    mn = min((nmove(i, n) * 2 + nmove(m - i, n - 1), i) for i in range(1, m))[1]
+    mn = min((nmove(i, n) * 2 + nmove(md - i, n - 1), i) for i in range(1, md))[1]
     yield from hanoi(mn, [pos[0]] + pos[2:] + [pos[1]])
-    yield from hanoi(m - mn, [pos[0]] + pos[2:-1] + [pos[-1]])
+    yield from hanoi(md - mn, [pos[0]] + pos[2:-1] + [pos[-1]])
     yield from hanoi(mn, pos[1:-1] + [pos[0], pos[-1]])
 
 
