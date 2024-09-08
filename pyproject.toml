@@ -24,7 +24,8 @@ hanoi = "k_peg_hanoi:main"
 homepage = "https://github.com/SaitoTsutomu/k-peg-hanoi"
 
 [tool.mypy]
-ignore_missing_imports = 1
+files = "src"
+ignore_missing_imports = true
 
 [tool.ruff]
 src = ["src"]
