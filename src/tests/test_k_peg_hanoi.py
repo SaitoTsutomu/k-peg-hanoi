@@ -4,7 +4,7 @@ from k_peg_hanoi import hanoi
 
 
 @pytest.mark.parametrize(
-    "md,size,n_hands",
+    ("md", "size", "n_hands"),
     [
         (1, 2, 1),
         (2, 3, 3),

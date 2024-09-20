@@ -19,9 +19,9 @@ def nmove(m: int, n: int) -> float:
     n = min(m + 1, n)
     if n == 2:
         return 1 if m == 1 else float("inf")
-    elif n == 3:
+    if n == 3:
         return 2**m - 1
-    elif n == m + 1:
+    if n == m + 1:
         return 2 * m - 1
     return min(nmove(i, n) * 2 + nmove(m - i, n - 1) for i in range(1, m))
 
@@ -56,7 +56,7 @@ def _show(towers, count):
     print(f"{count:-<{width * 2 * len(towers) - 1}}\n")
 
 
-def show_hanoi(m: int, n: int = 3, text: bool = False):
+def show_hanoi(m: int, n: int = 3, *, text: bool = False):
     """Show move of Tower of Hanoi
 
     :param m: number of disks
