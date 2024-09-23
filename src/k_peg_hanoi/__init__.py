@@ -1,14 +1,19 @@
 from collections.abc import Iterable
-from functools import lru_cache
+from functools import cache
+from importlib.metadata import metadata
 
 import fire
+
+_package_metadata = metadata(__package__)
+__version__ = _package_metadata["Version"]
+__author__ = _package_metadata.get("Author-email", "")
 
 
 def main():
     fire.Fire(show_hanoi)
 
 
-@lru_cache(maxsize=1024)
+@cache
 def nmove(m: int, n: int) -> float:
     """minimum number of moves
 
