@@ -42,7 +42,9 @@ def hanoi(md: int, pos: list[int]) -> Iterable[tuple[int, int]]:
         yield pos[0], pos[-1]
         return
     n = len(pos)
-    assert n > 2, "Too few len(pos)"
+    if n <= 2:
+        msg = "Too few len(pos)"
+        raise ValueError(msg)
     mn = min((nmove(i, n) * 2 + nmove(md - i, n - 1), i) for i in range(1, md))[1]
     yield from hanoi(mn, [pos[0]] + pos[2:] + [pos[1]])
     yield from hanoi(md - mn, [pos[0]] + pos[2:-1] + [pos[-1]])

@@ -1,3 +1,4 @@
+# flake8: noqa: S101
 import pytest
 
 from k_peg_hanoi import hanoi
