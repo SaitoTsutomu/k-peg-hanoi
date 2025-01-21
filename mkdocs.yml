@@ -1,0 +1,8 @@
+site_name: Tower of Hanoi (using k peg)
+
+theme:
+  name: "material"
+
+plugins:
+  - search
+  - mkdocstrings
