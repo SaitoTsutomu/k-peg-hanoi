@@ -17,12 +17,9 @@ def main():
 def nmove(m: int, n: int) -> float:
     """minimum number of moves
 
-    Args:
-        m: number of disks
-        n: number of rods
-
-    Returns:
-        minimum number of moves
+    :param m: number of disks
+    :param n: number of rods
+    :return: minimum number of moves
     """
     n = min(m + 1, n)
     if n == 2:
@@ -37,12 +34,9 @@ def nmove(m: int, n: int) -> float:
 def hanoi(md: int, pos: list[int]) -> Iterable[tuple[int, int]]:
     """Moves of Tower of Hanoi
 
-    Args:
-        md: number of disks
-        pos: position of rods
-
-    Yields:
-        from, to
+    :param md: number of disks
+    :param pos: position of rods
+    :return: from, to
     """
     if md == 1:
         yield pos[0], pos[-1]
@@ -72,10 +66,9 @@ def _show(towers, count):
 def show_hanoi(m: int, n: int = 3, *, text: bool = False):
     """Show move of Tower of Hanoi
 
-    Args:
-        m: number of disks
-        n: number of rods. Defaults to 3.
-        text: show with text. Defaults to False.
+    :param m: number of disks
+    :param n: number of rods, default 3
+    :param text: show with text, default False
     """
     towers = [list(range(m, 0, -1))] + [[] for _ in range(n - 1)]
     if not text:
