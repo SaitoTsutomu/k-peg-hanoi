@@ -1,5 +1,11 @@
 # Tower of Hanoi (using k peg)
 
+## Install
+
+```
+pip install k-peg-hanoi
+```
+
 ## Usage (`hanoi {disk#} {rod#}`)
 
 See `hanoi --help`

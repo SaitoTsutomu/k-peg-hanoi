@@ -15,12 +15,13 @@ license = {text = "Apache-2.0"}
 name = "k-peg-hanoi"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.2.2"
+version = "0.2.3"
 
 [project.scripts]
 hanoi = "k_peg_hanoi:main"
 
 [project.urls]
+docs = "https://saitotsutomu.github.io/k-peg-hanoi/"
 homepage = "https://github.com/SaitoTsutomu/k-peg-hanoi"
 
 [tool.uv]

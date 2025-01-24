@@ -2,6 +2,12 @@ site_name: Tower of Hanoi (using k peg)
 
 theme:
   name: "material"
+  language: ja
+
+markdown_extensions:
+  - codehilite:
+      noclasses: true
+      pygments_style: colorful
 
 plugins:
   - search
