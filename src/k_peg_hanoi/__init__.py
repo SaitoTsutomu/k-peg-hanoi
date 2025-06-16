@@ -4,9 +4,10 @@ from importlib.metadata import metadata
 
 import fire
 
-_package_metadata = metadata(__package__)
-__version__ = _package_metadata["Version"]
-__author__ = _package_metadata.get("Author-email", "")
+if __package__:
+    _package_metadata = metadata(__package__)
+    __version__ = _package_metadata["Version"]
+    __author__ = _package_metadata.get("Author-email", "")
 
 
 def main():
@@ -15,7 +16,7 @@ def main():
 
 @cache
 def nmove(m: int, n: int) -> float:
-    """minimum number of moves
+    """Minimum number of moves
 
     :param m: number of disks
     :param n: number of rods
@@ -46,9 +47,9 @@ def hanoi(md: int, pos: list[int]) -> Iterable[tuple[int, int]]:
         msg = "Too few len(pos)"
         raise ValueError(msg)
     mn = min((nmove(i, n) * 2 + nmove(md - i, n - 1), i) for i in range(1, md))[1]
-    yield from hanoi(mn, [pos[0]] + pos[2:] + [pos[1]])
-    yield from hanoi(md - mn, [pos[0]] + pos[2:-1] + [pos[-1]])
-    yield from hanoi(mn, pos[1:-1] + [pos[0], pos[-1]])
+    yield from hanoi(mn, [pos[0], *pos[2:], pos[1]])
+    yield from hanoi(md - mn, [pos[0], *pos[2:-1], pos[-1]])
+    yield from hanoi(mn, [*pos[1:-1], pos[0], pos[-1]])
 
 
 def _show(towers, count):
