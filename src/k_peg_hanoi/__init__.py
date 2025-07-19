@@ -4,10 +4,9 @@ from importlib.metadata import metadata
 
 import fire
 
-if __package__:
-    _package_metadata = metadata(__package__)
-    __version__ = _package_metadata["Version"]
-    __author__ = _package_metadata.get("Author-email", "")
+_package_metadata = metadata(__package__)
+__version__ = _package_metadata["Version"]
+__author__ = _package_metadata.get("Author-email", "")
 
 
 def main():
