@@ -5,7 +5,6 @@ nbs/
 .ruff_cache/
 .DS_Store
 .envrc
-.python-version
 Untitled*.ipynb
 
 # Byte-compiled / optimized / DLL files

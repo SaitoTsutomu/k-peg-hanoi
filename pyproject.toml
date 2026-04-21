@@ -24,11 +24,22 @@ hanoi = "k_peg_hanoi:main"
 docs = "https://saitotsutomu.github.io/k-peg-hanoi/"
 homepage = "https://github.com/SaitoTsutomu/k-peg-hanoi"
 
-[tool.uv]
-dev-dependencies = [
-  "pytest>=8.4.1",
+[dependency-groups]
+dev = [
+  "pytest>=9.0.2",
   "pytest-snapshot>=0.9.0",
 ]
+
+[tool.taskipy.tasks]
+license = "uv run -w pip-licenses pip-licenses"
+pip-audit = "uv run -w pip-audit pip-audit"
+
+[tool.uv]
+exclude-newer = "3 days"
+
+[[tool.uv.index]]
+default = true
+url = "https://pypi.flatt.tech/simple/"
 
 [tool.mypy]
 files = "src"
@@ -45,9 +56,6 @@ select = ["ALL"]
 [tool.ruff.lint.mccabe]
 max-complexity = 10
 
-[tool.taskipy.tasks]
-license = "uv run --with pip-licenses pip-licenses"
-
 [build-system]
-build-backend = "hatchling.build"
-requires = ["hatchling"]
+build-backend = "uv_build"
+requires = ["uv_build>=0.11.6,<0.12.0"]
