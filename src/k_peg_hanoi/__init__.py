@@ -1,10 +1,11 @@
+# ruff: noqa: RUF067
 from collections.abc import Iterable
 from functools import cache
 from importlib.metadata import metadata
 
 import fire
 
-_package_metadata = metadata(__package__)
+_package_metadata = metadata(__package__)  # type: ignore[bad-argument-type]
 __version__ = _package_metadata["Version"]
 __author__ = _package_metadata.get("Author-email", "")
 

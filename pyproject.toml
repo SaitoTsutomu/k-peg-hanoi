@@ -32,7 +32,9 @@ dev = [
 
 [tool.taskipy.tasks]
 license = "uv run -w pip-licenses pip-licenses"
+lint = "ruff check src && pyrefly check src"
 pip-audit = "uv run -w pip-audit pip-audit"
+test = "uv run pytest"
 
 [tool.uv]
 exclude-newer = "3 days"
@@ -44,6 +46,9 @@ url = "https://pypi.flatt.tech/simple/"
 [tool.mypy]
 files = "src"
 ignore_missing_imports = true
+
+[tool.pyrefly]
+project-includes = ["src"]
 
 [tool.ruff]
 src = ["src"]
