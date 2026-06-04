@@ -26,14 +26,13 @@ homepage = "https://github.com/SaitoTsutomu/k-peg-hanoi"
 
 [dependency-groups]
 dev = [
-  "pytest>=9.0.2",
+  "pytest>=9.0.3",
   "pytest-snapshot>=0.9.0",
 ]
 
 [tool.taskipy.tasks]
 license = "uv run -w pip-licenses pip-licenses"
 lint = "ruff check src && pyrefly check src"
-pip-audit = "uv run -w pip-audit pip-audit"
 test = "uv run pytest"
 
 [tool.uv]
