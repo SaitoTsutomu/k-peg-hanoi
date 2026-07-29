@@ -32,7 +32,7 @@ dev = [
 
 [tool.taskipy.tasks]
 license = "uv run -w pip-licenses pip-licenses"
-lint = "ruff check src && pyrefly check src"
+lint = "pyrefly check src && ruff check src"
 test = "uv run pytest"
 
 [tool.uv]
@@ -53,7 +53,7 @@ project-includes = ["src"]
 src = ["src"]
 
 [tool.ruff.lint]
-ignore = ["ANN", "CPY", "D", "DOC", "E501", "PLR2004", "T201"]
+ignore = ["ANN", "CPY", "D", "DOC", "line-too-long", "magic-value-comparison", "print"]
 preview = true
 select = ["ALL"]
 
@@ -62,4 +62,4 @@ max-complexity = 10
 
 [build-system]
 build-backend = "uv_build"
-requires = ["uv_build>=0.11.6,<0.12.0"]
+requires = ["uv_build>=0.12.0,<0.13.0"]

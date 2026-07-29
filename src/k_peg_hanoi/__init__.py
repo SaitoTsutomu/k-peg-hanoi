@@ -1,4 +1,4 @@
-# ruff: noqa: RUF067
+# ruff: file-ignore[non-empty-init-module]
 from collections.abc import Iterable
 from functools import cache
 from importlib.metadata import metadata
