@@ -10,7 +10,7 @@ def main():
 
 
 @cache
-def nmove(m: int, n: int) -> float:
+def nmove(m: int, n: int) -> int:
     """Minimum number of moves
 
     :param m: number of disks
@@ -18,8 +18,11 @@ def nmove(m: int, n: int) -> float:
     :return: minimum number of moves
     """
     n = min(m + 1, n)
-    if n == 2:
-        return 1 if m == 1 else float("inf")
+    if n == 2 and m == 1:
+        return 1
+    if n <= 2:
+        msg = "Too few rods"
+        raise ValueError(msg)
     if n == 3:
         return 2**m - 1
     if n == m + 1:
@@ -34,6 +37,9 @@ def hanoi(md: int, pos: list[int]) -> Iterable[tuple[int, int]]:
     :param pos: position of rods
     :return: from, to
     """
+    if md < 1:
+        msg = "Too few md"
+        raise ValueError(msg)
     if md == 1:
         yield pos[0], pos[-1]
         return
@@ -41,7 +47,10 @@ def hanoi(md: int, pos: list[int]) -> Iterable[tuple[int, int]]:
     if n <= 2:
         msg = "Too few len(pos)"
         raise ValueError(msg)
-    mn = min((nmove(i, n) * 2 + nmove(md - i, n - 1), i) for i in range(1, md))[1]
+    if n == 3:
+        mn = md - 1
+    else:
+        mn = min((nmove(i, n) * 2 + nmove(md - i, n - 1), i) for i in range(1, md))[1]
     yield from hanoi(mn, [pos[0], *pos[2:], pos[1]])
     yield from hanoi(md - mn, [pos[0], *pos[2:-1], pos[-1]])
     yield from hanoi(mn, [*pos[1:-1], pos[0], pos[-1]])
@@ -60,12 +69,15 @@ def _show(towers, count):
 
 
 def show_hanoi(
-    m: Annotated[int, typer.Argument(help="number of disks")],
+    m: Annotated[int, typer.Argument(min=1, help="number of disks")],
     n: Annotated[int, typer.Argument(help="number of rods")] = 3,
     *,
-    text: Annotated[bool, typer.Option(help="show with text")] = False,
+    text: Annotated[bool, typer.Option("--text", help="show with text")] = False,
 ):
     """Show move of Tower of Hanoi"""
+    if n < (2 if m == 1 else 3):
+        msg = "need at least 3 rods (2 rods only for 1 disk)"
+        raise typer.BadParameter(msg, param_hint="n")
     towers = [list(range(m, 0, -1))] + [[] for _ in range(n - 1)]
     if not text:
         _show(towers, 0)

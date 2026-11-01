@@ -1,7 +1,7 @@
 [project]
 authors = [{name = "Saito Tsutomu", email = "tsutomu7@hotmail.co.jp"}]
 classifiers = [
-  "License :: OSI Approved :: Apache Software License",
+  "Development Status :: 4 - Beta",
   "Programming Language :: Python",
   "Topic :: Software Development",
   "Topic :: Scientific/Engineering",
@@ -10,7 +10,8 @@ dependencies = [
   "typer>=0.27.3",
 ]
 description = "Tower of Hanoi (using k peg)"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 name = "k-peg-hanoi"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -41,10 +42,6 @@ exclude-newer = "3 days"
 [[tool.uv.index]]
 default = true
 url = "https://pypi.flatt.tech/simple/"
-
-[tool.mypy]
-files = "src"
-ignore_missing_imports = true
 
 [tool.pyrefly]
 project-includes = ["src"]

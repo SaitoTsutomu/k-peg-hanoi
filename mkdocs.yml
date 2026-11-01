@@ -2,7 +2,7 @@ site_name: Tower of Hanoi (using k peg)
 
 theme:
   name: "material"
-  language: ja
+  language: en
 
 markdown_extensions:
   - codehilite:
