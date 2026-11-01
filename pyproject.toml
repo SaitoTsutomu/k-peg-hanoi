@@ -1,7 +1,6 @@
 [project]
 authors = [{name = "Saito Tsutomu", email = "tsutomu7@hotmail.co.jp"}]
 classifiers = [
-  "Development Status :: 1 - Planning",
   "License :: OSI Approved :: Apache Software License",
   "Programming Language :: Python",
   "Topic :: Software Development",
@@ -15,7 +14,7 @@ license = {text = "Apache-2.0"}
 name = "k-peg-hanoi"
 readme = "README.md"
 requires-python = ">=3.11"
-version = "0.2.5"
+version = "0.2.6"
 
 [project.scripts]
 hanoi = "k_peg_hanoi:main"
@@ -26,7 +25,7 @@ homepage = "https://github.com/SaitoTsutomu/k-peg-hanoi"
 
 [dependency-groups]
 dev = [
-  "pytest>=9.0.3",
+  "pytest>=9.2",
   "pytest-snapshot>=0.9.0",
 ]
 
@@ -62,4 +61,4 @@ max-complexity = 10
 
 [build-system]
 build-backend = "uv_build"
-requires = ["uv_build>=0.12.0,<0.13.0"]
+requires = ["uv_build>=0.13.3,<0.14.0"]

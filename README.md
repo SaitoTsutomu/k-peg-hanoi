@@ -2,7 +2,7 @@
 
 ## Install
 
-```
+```sh
 pip install k-peg-hanoi
 ```
 
@@ -10,7 +10,7 @@ pip install k-peg-hanoi
 
 See `hanoi --help`
 
-```
+```sh
 $ hanoi 3 3
   =               
  ===              
@@ -45,7 +45,7 @@ $ hanoi 3 3
 7----------------
 ```
 
-```
+```sh
 $ hanoi 3 4
   =                     
  ===                    
@@ -72,7 +72,7 @@ $ hanoi 3 4
 5----------------------
 ```
 
-```
+```sh
 $ hanoi 4 4 --text
 #1 disk 1 from 0 to 1
 #2 disk 2 from 0 to 3
