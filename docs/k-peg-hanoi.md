@@ -23,4 +23,4 @@ for i, (from_, to) in enumerate(hanoi(md, list(range(size))), 1):
 
 ## `k_peg_hanoi` module
 
-::: src.k_peg_hanoi
+::: src.k_peg_hanoi.core

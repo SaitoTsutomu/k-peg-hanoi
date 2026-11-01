@@ -22,4 +22,4 @@ from k_peg_hanoi import hanoi
 def test_moves(snapshot, md, size, n_hands):
     result = list(hanoi(md, list(range(size))))
     assert len(result) == n_hands
-    snapshot.assert_match(str(result), "result.txt")
+    assert result == snapshot

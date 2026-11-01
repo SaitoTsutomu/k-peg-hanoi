@@ -1,5 +1,8 @@
 # Tower of Hanoi (using k peg)
 
+Solves the Tower of Hanoi with any number of rods (3 or more) in as few moves as possible.
+It shows each move on the command line, and also provides a Python function that returns the moves.
+
 ## Install
 
 ```sh
@@ -7,6 +10,10 @@ pip install k-peg-hanoi
 ```
 
 ## Usage (`hanoi {disk#} {rod#}`)
+
+- `disk#`: number of disks
+- `rod#`: number of rods, default 3
+- `--text`: show moves as text instead of drawing the towers
 
 See `hanoi --help`
 
