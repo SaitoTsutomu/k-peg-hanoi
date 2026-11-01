@@ -1,5 +1,6 @@
 from collections.abc import Iterable
 from functools import cache
+from importlib.metadata import version
 from typing import Annotated
 
 import typer
@@ -68,11 +69,26 @@ def _show(towers, count):
     print(f"{count:-<{width * 2 * len(towers) - 1}}\n")
 
 
+def _version_callback(*, value: bool):
+    if value:
+        print(version("k-peg-hanoi"))
+        raise typer.Exit
+
+
 def show_hanoi(
-    m: Annotated[int, typer.Argument(min=1, help="number of disks")],
-    n: Annotated[int, typer.Argument(help="number of rods")] = 3,
+    m: Annotated[int, typer.Argument(min=1, help="Number of disks")],
+    n: Annotated[int, typer.Argument(help="Number of rods")] = 3,
     *,
-    text: Annotated[bool, typer.Option("--text", help="show with text")] = False,
+    text: Annotated[bool, typer.Option("--text", help="Show with text")] = False,
+    show_version: Annotated[  # ruff: ignore[unused-function-argument]
+        bool,
+        typer.Option(
+            "--version",
+            callback=_version_callback,
+            is_eager=True,
+            help="Show version and exit",
+        ),
+    ] = False,
 ):
     """Show move of Tower of Hanoi"""
     if n < (2 if m == 1 else 3):
